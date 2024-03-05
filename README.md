@@ -23,9 +23,66 @@ Implementation using C or pyhton code
 Testing algorithm with different key values. 
 
 ## PROGRAM:
+## Encryption:
+
+def caesar_cipher(text, shift):
+    encrypted_text = ""
+    for char in text:
+        if char.isalpha():  # Check if the character is alphabet
+            shifted = ord(char) + shift
+            if char.islower():
+                if shifted > ord('z'):
+                    shifted -= 26
+                elif shifted < ord('a'):
+                    shifted += 26
+            elif char.isupper():
+                if shifted > ord('Z'):
+                    shifted -= 26
+                elif shifted < ord('A'):
+                    shifted += 26
+            encrypted_text += chr(shifted)
+        else:
+            encrypted_text += char
+    return encrypted_text
+text = "kaushik"
+shift = 3
+
+
+encrypted_text = caesar_cipher(text, shift)
+print("Original Text:", text)
+print("Encrypted Text:", encrypted_text)
+
+## Decryption:
+
+def caesar_decrypt(encrypted_text, shift):
+    decrypted_text = ""
+    for char in encrypted_text:
+        if char.isalpha():  # Check if the character is alphabet
+            shifted = ord(char) - shift
+            if char.islower():
+                if shifted > ord('z'):
+                    shifted -= 26
+                elif shifted < ord('a'):
+                    shifted += 26
+            elif char.isupper():
+                if shifted > ord('Z'):
+                    shifted -= 26
+                elif shifted < ord('A'):
+                    shifted += 26
+            decrypted_text += chr(shifted)
+        else:
+            decrypted_text += char
+    return decrypted_text
+
+
+text = "kaushik "
+shift = 3
+
+decrypted_text = caesar_decrypt(encrypted_text, shift)
+print("Decrypted Text:", decrypted_text)
 
 ## OUTPUT:
-
+![Screenshot 2024-03-05 132930](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/08662f49-9c70-4b79-a722-4efd73ed5569)
 ## RESULT:
 The program is executed successfully
 
