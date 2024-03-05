@@ -111,7 +111,7 @@ Implementation using C or pyhton code
 Testing algorithm with different key values. 
 
 ## PROGRAM:
-def generate_key_square(key):
+'''def generate_key_square(key):
     key = key.upper().replace(" ", "")
     key_square = ""
     for char in key:
@@ -173,7 +173,7 @@ encrypted_text = playfair_encrypt(plain_text, key)
 print("Encrypted Text:", encrypted_text)
 
 decrypted_text = playfair_decrypt(encrypted_text, key)
-print("Decrypted Text:", decrypted_text)
+print("Decrypted Text:", decrypted_text)'''
 
 
 ## OUTPUT:
