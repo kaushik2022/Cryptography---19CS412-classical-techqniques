@@ -25,7 +25,7 @@ Testing algorithm with different key values.
 ## PROGRAM:
 ## Encryption:
 
-```
+````
 def caesar_cipher(text, shift):
     encrypted_text = ""
     for char in text:
@@ -81,9 +81,13 @@ shift = 3
 
 decrypted_text = caesar_decrypt(encrypted_text, shift)
 print("Decrypted Text:", decrypted_text)
-'''
+
+````
+
 ## OUTPUT:
-![Screenshot 2024-03-05 132930](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/b9f0e58c-165a-4949-a7ce-f4a4cfda7830)
+
+![g1](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/7ef1e18d-8bf4-447c-9ada-fb05c49a5fbd)
+
 
 
 ## RESULT:
@@ -113,7 +117,7 @@ Implementation using C or pyhton code
 Testing algorithm with different key values. 
 
 ## PROGRAM:
-'''
+````
 def generate_key_square(key):
     key = key.upper().replace(" ", "")
     key_square = ""
@@ -177,7 +181,7 @@ print("Encrypted Text:", encrypted_text)
 
 decrypted_text = playfair_decrypt(encrypted_text, key)
 print("Decrypted Text:", decrypted_text)
-'''
+````
 
 
 ## OUTPUT:
