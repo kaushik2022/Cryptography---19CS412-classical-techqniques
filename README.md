@@ -75,7 +75,7 @@ def caesar_decrypt(encrypted_text, shift):
     return decrypted_text
 
 
-text = "kaushik "
+text = "kaushik"
 shift = 3
 
 decrypted_text = caesar_decrypt(encrypted_text, shift)
