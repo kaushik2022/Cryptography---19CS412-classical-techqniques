@@ -118,74 +118,137 @@ Testing algorithm with different key values.
 
 ## PROGRAM:
 ````
-def generate_key_square(key):
-    key = key.upper().replace(" ", "")
-    key_square = ""
-    for char in key:
-        if char not in key_square:
-            key_square += char
-    alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
-    for char in alphabet:
-        if char not in key_square:
-            key_square += char
-    return key_square
-
-def prepare_text(text):
-    text = text.upper().replace(" ", "")
-    text = "".join(char for char in text if char.isalpha())
-    if len(text) % 2 != 0:
-        text += 'X'
-    return text
-
-def encrypt_pair(pair, key_square):
-    row1, col1 = divmod(key_square.index(pair[0]), 5)
-    row2, col2 = divmod(key_square.index(pair[1]), 5)
-    if row1 == row2:
-        return key_square[row1 * 5 + (col1 + 1) % 5] + key_square[row2 * 5 + (col2 + 1) % 5]
-    elif col1 == col2:
-        return key_square[((row1 + 1) % 5) * 5 + col1] + key_square[((row2 + 1) % 5) * 5 + col2]
-    else:
-        return key_square[row1 * 5 + col2] + key_square[row2 * 5 + col1]
-
-def decrypt_pair(pair, key_square):
-    row1, col1 = divmod(key_square.index(pair[0]), 5)
-    row2, col2 = divmod(key_square.index(pair[1]), 5)
-    if row1 == row2:
-        return key_square[row1 * 5 + (col1 - 1) % 5] + key_square[row2 * 5 + (col2 - 1) % 5]
-    elif col1 == col2:
-        return key_square[((row1 - 1) % 5) * 5 + col1] + key_square[((row2 - 1) % 5) * 5 + col2]
-    else:
-        return key_square[row1 * 5 + col2] + key_square[row2 * 5 + col1]
-
-def playfair_encrypt(plain_text, key):
-    key_square = generate_key_square(key)
-    plain_text = prepare_text(plain_text)
-    encrypted_text = ""
-    for i in range(0, len(plain_text), 2):
-        encrypted_text += encrypt_pair(plain_text[i:i+2], key_square)
-    return encrypted_text
-
-def playfair_decrypt(encrypted_text, key):
-    key_square = generate_key_square(key)
-    decrypted_text = ""
-    for i in range(0, len(encrypted_text), 2):
-        decrypted_text += decrypt_pair(encrypted_text[i:i+2], key_square)
-    return decrypted_text
-
-# Example usage:
-plain_text = "kaushik"
-key = "PLAYFAIR EXAMPLE"
-
-encrypted_text = playfair_encrypt(plain_text, key)
-print("Encrypted Text:", encrypted_text)
-
-decrypted_text = playfair_decrypt(encrypted_text, key)
-print("Decrypted Text:", decrypted_text)
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<ctype.h>
+#define MX 5
+void playfair(char ch1,char ch2, char key[MX][MX])
+{
+int i,j,w,x,y,z;
+FILE *out;
+if((out=fopen("cipher.txt","a+"))==NULL)
+{
+printf("File Corrupted.");
+}
+for(i=0;i<MX;i++)
+{
+for(j=0;j<MX;j++)
+{
+if(ch1==key[i][j])
+{
+w=i;
+x=j;
+}
+else if(ch2==key[i][j])
+{
+y=i;
+z=j;
+}}}
+//printf("%d%d %d%d",w,x,y,z);
+if(w==y)
+{
+x=(x+1)%5;z=(z+1)%5;
+printf("%c%c",key[w][x],key[y][z]);
+fprintf(out, "%c%c",key[w][x],key[y][z]);
+}
+else if(x==z)
+{
+w=(w+1)%5;y=(y+1)%5;
+printf("%c%c",key[w][x],key[y][z]);
+fprintf(out, "%c%c",key[w][x],key[y][z]);
+}
+else
+{
+printf("%c%c",key[w][z],key[y][x]);
+fprintf(out, "%c%c",key[w][z],key[y][x]);
+}
+fclose(out);
+}
+int main()
+{
+int i,j,k=0,l,m=0,n;
+char key[MX][MX],keyminus[25],keystr[10],str[25]={0};
+char
+alpa[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+printf("\nEnter key:");
+gets(keystr);
+printf("\nEnter the plain text:");
+gets(str);
+n=strlen(keystr);
+//convert the characters to uppertext
+for (i=0; i<n; i++)
+{
+if(keystr[i]=='j')keystr[i]='i';
+else if(keystr[i]=='J')keystr[i]='I';
+keystr[i] = toupper(keystr[i]);
+}
+//convert all the characters of plaintext to uppertext
+for (i=0; i<strlen(str); i++)
+{
+if(str[i]=='j')str[i]='i';
+else if(str[i]=='J')str[i]='I';
+str[i] = toupper(str[i]);
+}
+j=0;
+for(i=0;i<26;i++)
+{
+for(k=0;k<n;k++)
+{
+if(keystr[k]==alpa[i])
+break;
+else if(alpa[i]=='J')
+break;
+}
+if(k==n)
+{
+keyminus[j]=alpa[i];j++;
+}
+}
+//construct key keymatrix
+k=0;
+for(i=0;i<MX;i++)
+{
+for(j=0;j<MX;j++)
+{
+if(k<n)
+{
+key[i][j]=keystr[k];
+k++;}
+else
+{
+key[i][j]=keyminus[m];m++;
+}
+printf("%c ",key[i][j]);
+}
+printf("\n");
+}
+printf("\n\nEntered text :%s\nCipher Text :",str);
+for(i=0;i<strlen(str);i++)
+{
+if(str[i]=='J')str[i]='I';
+if(str[i+1]=='\0')
+playfair(str[i],'X',key);
+else
+{
+if(str[i+1]=='J')str[i+1]='I';
+if(str[i]==str[i+1])
+playfair(str[i],'X',key);
+else
+{
+playfair(str[i],str[i+1],key);
+i++;
+}}
+}
+return 0;
+}
+ 
 ````
+# OUTPUT:
+
+#![Screenshot 2024-03-05 141000](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/f4a76739-c8a4-4670-8920-aebde47bfce9)
 
 
-## OUTPUT:
-![Screenshot 2024-03-05 134556](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/1a0b8c36-9da2-4440-8a14-43b2eaed3f4e)
 
 
 ## RESULT:
