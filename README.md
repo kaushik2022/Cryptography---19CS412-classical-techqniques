@@ -83,7 +83,8 @@ decrypted_text = caesar_decrypt(encrypted_text, shift)
 print("Decrypted Text:", decrypted_text)
 '''
 ## OUTPUT:
-![Screenshot 2024-03-05 132930](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/abd0b2ff-127e-449d-bc39-3b64bf56645c)
+![Screenshot 2024-03-05 132930](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/b9f0e58c-165a-4949-a7ce-f4a4cfda7830)
+
 
 ## RESULT:
 The program is executed successfully
@@ -180,7 +181,8 @@ print("Decrypted Text:", decrypted_text)
 
 
 ## OUTPUT:
-![Screenshot 2024-03-05 134556](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/6c6808b4-e9d3-4e9c-b695-ef6abd373ffd)
+![Screenshot 2024-03-05 134556](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/1a0b8c36-9da2-4440-8a14-43b2eaed3f4e)
+
 
 ## RESULT:
 The program is executed successfully
