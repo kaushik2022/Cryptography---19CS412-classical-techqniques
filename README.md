@@ -24,69 +24,53 @@ Testing algorithm with different key values.
 
 ## PROGRAM:
 ## Encryption:
+````
+#include<stdio.h>
+#include <string.h>
+#include<conio.h>
+#include <ctype.h>
+int main()
+{
+char plain[10], cipher[10];
+int key,i,length;
+int result;
+printf("\n Enter the plain text:");
+scanf("%s", plain);
+printf("\n Enter the key value:");
+scanf("%d", &key);
+printf("\n \n \t PLAIN TEXt: %s",plain);
+printf("\n \n \t ENCRYPTED TEXT: ");
+for(i = 0, length = strlen(plain); i < length; i++)
+{
+cipher[i]=plain[i] + key;
+if (isupper(plain[i]) && (cipher[i] > 'Z'))
+cipher[i] = cipher[i] - 26;
+if (islower(plain[i]) && (cipher[i] > 'z'))
+cipher[i] = cipher[i] - 26;
+printf("%c", cipher[i]);
+}
+printf("\n \n \t AFTER DECRYPTION : ");
+for(i=0;i<length;i++)
+{
+plain[i]=cipher[i]-key;
+if(isupper(cipher[i])&&(plain[i]<'A'))
+plain[i]=plain[i]+26;
+if(islower(cipher[i])&&(plain[i]<'a'))
+plain[i]=plain[i]+26;
+printf("%c",plain[i]);
+}
+return 0;
+}
 
 ````
-def caesar_cipher(text, shift):
-    encrypted_text = ""
-    for char in text:
-        if char.isalpha():  # Check if the character is alphabet
-            shifted = ord(char) + shift
-            if char.islower():
-                if shifted > ord('z'):
-                    shifted -= 26
-                elif shifted < ord('a'):
-                    shifted += 26
-            elif char.isupper():
-                if shifted > ord('Z'):
-                    shifted -= 26
-                elif shifted < ord('A'):
-                    shifted += 26
-            encrypted_text += chr(shifted)
-        else:
-            encrypted_text += char
-    return encrypted_text
-text = "kaushik"
-shift = 3
 
 
-encrypted_text = caesar_cipher(text, shift)
-print("Original Text:", text)
-print("Encrypted Text:", encrypted_text)
 
-## Decryption:
-
-def caesar_decrypt(encrypted_text, shift):
-    decrypted_text = ""
-    for char in encrypted_text:
-        if char.isalpha():  # Check if the character is alphabet
-            shifted = ord(char) - shift
-            if char.islower():
-                if shifted > ord('z'):
-                    shifted -= 26
-                elif shifted < ord('a'):
-                    shifted += 26
-            elif char.isupper():
-                if shifted > ord('Z'):
-                    shifted -= 26
-                elif shifted < ord('A'):
-                    shifted += 26
-            decrypted_text += chr(shifted)
-        else:
-            decrypted_text += char
-    return decrypted_text
-
-
-text = "kaushik"
-shift = 3
-
-decrypted_text = caesar_decrypt(encrypted_text, shift)
-print("Decrypted Text:", decrypted_text)
-
-````
 
 ## OUTPUT:
 
-![g1](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/7ef1e18d-8bf4-447c-9ada-fb05c49a5fbd)
+![image](https://github.com/kaushik2022/Cryptography---19CS412-classical-techqniques/assets/129837020/731132ee-fb8b-433d-9f11-7f14045d6768)
+
 
 
 
